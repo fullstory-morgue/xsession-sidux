@@ -1,0 +1,14 @@
+Source: xsession-kanotix
+Section: base
+Priority: optional
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Build-Depends-Indep: @cdbs@
+Standards-Version: 3.6.2
+
+Package: xsession-kanotix
+Architecture: all
+Depends: etcskel-kanotix, knoppix-remountrw, rsync, mkdesktophdicons-kanotix, hwsetup-kanotix, distro-defaults
+Provides: xsession-knoppix
+Replaces: xsession-knoppix
+Description: Automatic Xsession startup script for KANOTIX
+ Only for live usage, as this overrides the ordinary startup methods.
