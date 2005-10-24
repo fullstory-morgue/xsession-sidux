@@ -1,3 +1,9 @@
+xsession-kanotix (0.5.63) unstable; urgency=low
+
+  * only suggest mkdesktophdicons-kanotix.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 24 Oct 2005 22:34:20 +0200
+
 xsession-kanotix (0.5.62) unstable; urgency=low
 
   * add initial distro-defaults support.

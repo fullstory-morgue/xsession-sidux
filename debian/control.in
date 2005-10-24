@@ -7,7 +7,8 @@ Standards-Version: 3.6.2
 
 Package: xsession-kanotix
 Architecture: all
-Depends: etcskel-kanotix, knoppix-remountrw, rsync, mkdesktophdicons-kanotix, hwsetup-kanotix, distro-defaults
+Depends: etcskel-kanotix, kanotix-remountrw, rsync, hwsetup-kanotix, distro-defaults
+Suggests: mkdesktophdicons-kanotix
 Provides: xsession-knoppix
 Replaces: xsession-knoppix
 Description: Automatic Xsession startup script for KANOTIX
