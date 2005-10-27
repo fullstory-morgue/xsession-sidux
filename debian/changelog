@@ -1,8 +1,9 @@
-xsession-kanotix (0.5.64) UNRELEASED; urgency=low
+xsession-kanotix (0.5.64) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * make really sure that /etc/X11/Xsession.d/45xsession does never exist on
+    an installed system.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 24 Oct 2005 22:35:34 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 27 Oct 2005 10:12:28 +0200
 
 xsession-kanotix (0.5.63) unstable; urgency=low
 

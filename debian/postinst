@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# override tool behaviour through distro-defaults
+FLL_DISTRO_MODE="installed"
+if [ -r /etc/default/distro ]; then
+	source /etc/default/distro
+fi
+
+if [ ! "$FLL_DISTRO_MODE" == "live" ]; then
+	rm -f /etc/X11/Xsession.d/45xsession
+fi
+
