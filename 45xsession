@@ -543,7 +543,7 @@ rsync -Ha --ignore-existing /etc/skel/{.gnome*,.gtk*,.metacity*,GNUstep,.sawfish
 #rm -f $HOME/.gnome-desktop/[hs]d[a-z][1-9]* 2>/dev/null
 #[ ! -d $HOME/.gnome-desktop ] && mkdir -p $HOME/.gnome-desktop
 #[ -f /cdrom/KNOPPIX/KNOPPIX ] && ln -s /cdrom $HOME/.gnome-desktop/ 2>/dev/null
-#HDS="`ls -1d /mnt/[hs]d[a-z][1-9]* /mnt/cdrom* 2>/dev/null`"
+#HDS="`ls -1d /media/[hs]d[a-z][1-9]* /media/cdrom* 2>/dev/null`"
 #[ -n "$HDS" ] && ln -s $HDS $HOME/.gnome-desktop/ 2>/dev/null
 #OPENWEBSCHOOL="/cdrom/Demos/OpenWebSchool"
 #[ -e "$OPENWEBSCHOOL" ] && ln -s "$OPENWEBSCHOOL" $HOME/.gnome-desktop/OWS
