@@ -1,8 +1,10 @@
-xsession-kanotix (0.5.65) UNRELEASED; urgency=low
+xsession-kanotix (0.5.65) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * remove cdbs auto-update feature.
+  * remove knoppix virtual packages.
+  * bump compat level to 5.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 27 Oct 2005 10:44:48 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 17 Dec 2005 03:36:25 +0100
 
 xsession-kanotix (0.5.64) unstable; urgency=low
 
