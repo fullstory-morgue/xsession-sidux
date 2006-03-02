@@ -1,3 +1,9 @@
+xsession-kanotix (0.5.67) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu,  2 Mar 2006 02:38:13 +0100
+
 xsession-kanotix (0.5.66) unstable; urgency=low
 
   * knoppix --> kanotix transition, thanks to x-un-i.
