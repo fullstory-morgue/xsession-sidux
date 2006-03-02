@@ -3,6 +3,7 @@
 # override tool behaviour through distro-defaults
 FLL_DISTRO_MODE="installed"
 FLL_LIVE_USER="knoppix"
+FLL_IMAGE_DIR="KNOPPIX"
 if [ -r /etc/default/distro ]; then
 	source /etc/default/distro
 fi
@@ -196,7 +197,7 @@ fi
 if [ -e /cdrom/index.html ]; then
 INDEXFILE="/cdrom/index.html"
 else
-for i in index KNOPPIX/index; do
+for i in index ${FLL_IMAGE_DIR}/index; do
 INDEXFILEDE="/cdrom/${i}.html"
 INDEXFILEEN="/cdrom/${i}_en.html"
 [ -e "$INDEXFILEEN" ] && INDEXFILE="$INDEXFILEEN" && [ "$LANGUAGE" != "de" ] && break
@@ -265,9 +266,9 @@ sed -e 's/^Layout=.*$/Layout='"$KDEKEYBOARD"'/' \
 touch -r /etc/skel/.kde/share/config/kxkbrc $HOME/.kde/share/config/kxkbrc 2>/dev/null
 
 # Check for custom splashscreen in /cdrom/KNOPPIX
-if [ -d /cdrom/KNOPPIX/ksplash ]; then
+if [ -d /cdrom/${FLL_IMAGE_DIR}/ksplash ]; then
 [ -d $HOME/.kde/share/apps ] || mkdir -p $HOME/.kde/share/apps
-ln -s /cdrom/KNOPPIX/ksplash $HOME/.kde/share/apps/
+ln -s /cdrom/${FLL_IMAGE_DIR}/ksplash $HOME/.kde/share/apps/
 fi
 
 fi
@@ -742,7 +743,7 @@ startnx()
 <group name="Login" >
 <option key="Auth" value="${nx_auth}" />
 <option key="Password" value="${nx_password}" />
-<option key="User" value="${nx_user:-knoppix}" />
+<option key="User" value="${nx_user:-$FLL_LIVE_USER}" />
 </group>
 <group name="VNC Session" >
 <option key="Password" value="" />
