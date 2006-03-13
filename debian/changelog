@@ -1,3 +1,10 @@
+xsession-kanotix (0.5.68) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+  * fix lintian error.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 13 Mar 2006 10:45:25 +0100
+
 xsession-kanotix (0.5.67) unstable; urgency=low
 
   * drop explicit dependency on hwsetup and use initscripts-kanotix-live
