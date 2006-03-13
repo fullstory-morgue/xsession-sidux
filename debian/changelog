@@ -1,8 +1,9 @@
-xsession-kanotix (0.5.67) UNRELEASED; urgency=low
+xsession-kanotix (0.5.67) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * drop explicit dependency on hwsetup and use initscripts-kanotix-live
+    instead.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu,  2 Mar 2006 02:38:13 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 13 Mar 2006 10:43:44 +0100
 
 xsession-kanotix (0.5.66) unstable; urgency=low
 

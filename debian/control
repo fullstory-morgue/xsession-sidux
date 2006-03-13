@@ -8,7 +8,7 @@ Standards-Version: 3.6.2
 Package: xsession-kanotix
 Architecture: all
 Pre-Depends: distro-defaults
-Depends: etcskel-kanotix, kanotix-remountrw, rsync, hwsetup-kanotix
+Depends: etcskel-kanotix, kanotix-remountrw, rsync, initscripts-kanotix-live
 Suggests: mkdesktophdicons-kanotix
 Description: Automatic Xsession startup script for KANOTIX
  Only for live usage, as this overrides the ordinary startup methods.
