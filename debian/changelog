@@ -1,9 +1,12 @@
-xsession-kanotix (0.5.68) UNRELEASED; urgency=low
+xsession-kanotix (0.5.68) unstable; urgency=low
 
-  * NOT RELEASED YET
+  [ Joerg Schirottke ]
+  * updated startkde for kde 3.5.4.
+
+  [ Stefan Lippers-Hollmann ]
   * fix lintian error.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 13 Mar 2006 10:45:25 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun,  6 Aug 2006 00:53:03 +0200
 
 xsession-kanotix (0.5.67) unstable; urgency=low
 

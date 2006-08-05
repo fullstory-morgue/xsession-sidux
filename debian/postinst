@@ -10,5 +10,3 @@ if [ ! "$FLL_DISTRO_MODE" == "live" ]; then
 	rm -f /etc/X11/Xsession.d/45xsession
 fi
 
-#DEBHELPER#
-
