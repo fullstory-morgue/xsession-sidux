@@ -74,7 +74,7 @@ fi
 [ -z "$DESKTOP" ] && DESKTOP="kde"
 
 # Copy profiles if not already present
-rsync -Ha --ignore-existing /etc/skel/{.acrorc,.Xdefaults,.gimp*,.gconf*,.bashrc,.nessus*,.links,.local,.lynx*,.qt,.gtk*,.xine,.szap,.tzap,.czap,.kaxtv,.tecla,pctv,tmp} $HOME/ 2>/dev/null
+rsync -Ha --ignore-existing /etc/skel/{.acrorc,.Xdefaults,.gimp*,.gconf*,.bashrc,.nessus*,.links,.local,.lynx*,.qt,.gtk*,.xine,.azap,.szap,.tzap,.czap,.kaxtv,.tecla,.xmms,pctv,tmp} $HOME/ 2>/dev/null
 [ "$USER" = "$FLL_LIVE_USER" ] && rsync -Ha --ignore-existing /usr/share/knoppix/profile/{.acrorc,.Xdefaults,.bashrc,.nessus*,.links,.lynx*,.qt,.xine,.kde,.klik,.zAppRun,.xchat2,tmp,.rox_choices,.xfce4} $HOME/ 2>/dev/null
 [ "$USER" = "$FLL_LIVE_USER" -a -f /usr/share/knoppix/profile/.fonts.cache-1 ] && rsync -H --ignore-existing /usr/share/knoppix/profile/.fonts.cache-1 $HOME/ 2>/dev/null
 # --- added for ROX and custom xfce4 & gnome desktops --- mz
