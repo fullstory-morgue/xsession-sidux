@@ -1,3 +1,9 @@
+xsession-kanotix (0.5.70) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 18 Sep 2006 02:59:44 +0200
+
 xsession-kanotix (0.5.69) unstable; urgency=low
 
   * Added .azap and .xmms copying from /etc/skel. 
