@@ -1,8 +1,8 @@
-xsession-kanotix (0.5.70) UNRELEASED; urgency=low
+xsession-kanotix (0.5.70) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * Added beryl/compiz support incl. cheatcodes for autostart. 
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 18 Sep 2006 02:59:44 +0200
+ -- Joerg Schirottke <master@kanotix.com>  Mon,  2 Oct 2006 00:05:47 +0200
 
 xsession-kanotix (0.5.69) unstable; urgency=low
 
