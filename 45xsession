@@ -17,6 +17,33 @@ export PATH
 
 umask 022
 
+# Functions shamelessly copied from -autoconfig
+stringinstring() {
+	case "$2" in
+		*$1*)
+			return 0
+			;;
+	esac
+	
+	return 1
+}
+
+# Reread boot command line; echo last parameter's argument or return false.
+getbootparam() {
+	stringinstring " $1=" "$CMDLINE" || return 1
+	result="${CMDLINE##*$1=}"
+	result="${result%%[     ]*}"
+	echo "$result"
+	
+	return 0
+}
+
+# Check boot commandline for specified option
+checkbootparam() {
+	stringinstring " $1" "$CMDLINE"
+	return "$?"
+}
+
 # /etc/X11/Xsession.d/75dbus_dbus-launch
 # needed for beryl/compiz
 
@@ -229,7 +256,9 @@ Type=Application
 Icon=html
 Terminal=0
 EOF
-		ln $HOME/Desktop/KANOTIX.desktop $HOME/.kde/Autostart/showindex.desktop
+		if ! checkbootparm "nointro"; then
+			ln $HOME/Desktop/KANOTIX.desktop $HOME/.kde/Autostart/showindex.desktop
+		fi
 	fi
 
 	# LinuxTag
@@ -709,33 +738,6 @@ startxfce4() {
 		rsync -Ha --ignore-existing /etc/skel/.xf* /usr/share/knoppix/profile/.xf* $HOME/ 2>/dev/null
 	fi
 	exec /etc/xdg/xfce4/xinitrc 
-}
-
-
-stringinstring() {
-	case "$2" in
-		*$1*)
-			return 0
-			;;
-	esac
-	
-	return 1
-}
-
-# Reread boot command line; echo last parameter's argument or return false.
-getbootparam() {
-	stringinstring " $1=" "$CMDLINE" || return 1
-	result="${CMDLINE##*$1=}"
-	result="${result%%[     ]*}"
-	echo "$result"
-	
-	return 0
-}
-
-# Check boot commandline for specified option
-checkbootparam() {
-	stringinstring " $1" "$CMDLINE"
-	return "$?"
 }
 
 startkiosk() {

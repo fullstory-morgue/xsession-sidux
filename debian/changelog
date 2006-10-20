@@ -1,8 +1,14 @@
 xsession-kanotix (0.5.71) UNRELEASED; urgency=low
 
+  [ Stefan Lippers-Hollmann ]
   * NOT RELEASED YET
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon,  2 Oct 2006 15:12:39 +0200
+  [ Kel Modderman ]
+  * Move utility functions to top of script
+  * Add "nointro" cheat to allow the skipping of index.html display at KDE
+    start.
+
+ -- Kel Modderman <kelmo@kanotixguide.org>  Fri, 20 Oct 2006 17:00:15 +1000
 
 xsession-kanotix (0.5.70) unstable; urgency=low
 
