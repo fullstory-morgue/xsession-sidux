@@ -1,8 +1,13 @@
-xsession-kanotix (0.5.73) UNRELEASED; urgency=low
+xsession-kanotix (0.5.73) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * fix wallpaper handling.
+  * get rid of obsolete LinuxTag branding.
+  * repair broken LANG composition.
+  * don't inline /etc/X11/Xsession.d/75dbus_dbus-launch.
+  * depend on dbus.
+  * remove obsolete mozilla-firebird compatibility.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu,  2 Nov 2006 14:31:13 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri,  3 Nov 2006 00:08:38 +0100
 
 xsession-kanotix (0.5.72) unstable; urgency=low
 

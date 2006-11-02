@@ -44,25 +44,8 @@ checkbootparam() {
 	return "$?"
 }
 
-# /etc/X11/Xsession.d/75dbus_dbus-launch
 # needed for beryl/compiz
-
-STARTDBUS=
-DBUSLAUNCH=/usr/bin/dbus-launch
-
-if grep -qs ^use-session-dbus "$OPTIONFILE"; then
-	if [ -x "$DBUSLAUNCH" ]; then
-		STARTDBUS=yes
-	fi
-fi
-
-if [ -n "$STARTDBUS" ]; then
-	DBUS=$($DBUSLAUNCH --exit-with-session)
-	eval "$DBUS"
-	export DBUS_SESSION_BUS_ADDRESS
-fi 	 
-
-# end /etc/X11/Xsession.d/75dbus_dbus-launch
+sh /etc/X11/Xsession.d/75dbus_dbus-launch
 
 [ -n "$KDEDIR" ] || KDEDIR="/usr"
 export KDEDIR
@@ -98,20 +81,6 @@ DONTCHANGE=""
 # Read default language/keyboard/background image
 [ -f /etc/sysconfig/knoppix ]  && . /etc/sysconfig/knoppix
 [ -f /etc/sysconfig/i18n ]  && . /etc/sysconfig/i18n
-
-if [ -n "$LANG" ]; then
-	# Try to repair a KDE/locale bug
-	LA="$LANG"
-	L="${LANG%%@*}"
-	C=$(awk '/^'"$LANG"'/{print $2;exit 0}' /etc/locale.gen 2>/dev/null)
-	[ -n "$L" -a -n "$C" ] && LANG="$L.$C"
-	LC_ALL="$LA"
-	export LANG
-fi
-
-if [ -n "$LC_ALL" ]; then
-	export LC_ALL
-fi
 
 [ -f /etc/sysconfig/keyboard ]  && . /etc/sysconfig/keyboard
 
@@ -153,14 +122,6 @@ if [ ! -e $HOME/.firefox -a "$FREESPACE" -gt 1500 ] && [ -d /etc/skel/.firefox -
 	[ "$USER" = "$FLL_LIVE_USER" ] && rsync -Ha --ignore-existing /usr/share/knoppix/profile/.firefox $HOME/ 2>/dev/null
 fi
 
-# Share Mozilla plugins with Firebird
-if [ -x /usr/bin/mozilla-firebird ]; then
-	if [ -e $HOME/.mozilla ]; then
-		mkdir -p $HOME/.mozilla/plugins $HOME/.mozilla-firebird
-		[ -e $HOME/.mozilla-firebird/plugins ] || ln -s ../.mozilla/plugins $HOME/.mozilla-firebird/plugins
-	fi
-fi
-
 # Share Mozilla plugins with Firefox
 if [ -x /usr/bin/mozilla-firefox ]; then
 	if [ -e $HOME/.mozilla ]; then
@@ -178,7 +139,7 @@ if [ -n "$LANGUAGE" ]; then
 		echo 'user_pref("intl.accept_languages", "'"$LANGUAGE"', en");' >>"$f"
 		
 		case "$LANGUAGE" in
-			de|at|ch)
+			de*|at*|ch*)
 				echo 'user_pref("general.useragent.contentlocale", "AT");' >>"$f"
 				echo 'user_pref("general.useragent.locale", "de-AT");' >>"$f" ;;
 		esac
@@ -261,11 +222,6 @@ EOF
 		fi
 	fi
 
-	# LinuxTag
-	if [ -d /cdrom/LinuxTag ]; then
-		ln -sf /cdrom/LinuxTag "$HOME/Desktop/"
-	fi
-
 	# Beryl
 	rm -f $HOME/.kde/Autostart/beryl.desktop
 	
@@ -312,8 +268,8 @@ X-KDE-autostart-after=kdesktop" > $HOME/.kde/Autostart/compiz.desktop
 		\mv -f $HOME/.kde/share/config/kdeglobals.tmp $HOME/.kde/share/config/kdeglobals
 
 		if [ -z "$BACKGROUND" -o ! -e "$BACKGROUND" ]; then
-			for i in jpg png gif; do
-				BACKGROUND=/usr/local/lib/knoppix.$i
+			for i in png jpg gif; do
+				BACKGROUND=usr/share/wallpapers/kanotix.$i
 				[ -e "$BACKGROUND" ] && break
 			done
 		fi
