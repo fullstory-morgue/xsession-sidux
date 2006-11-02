@@ -384,11 +384,11 @@ starttwm() {
 				case "$LANGUAGE" in
 					de|at|ch) MESSAGE="
 Nicht genug Speicher zum Start von $DESKTOP!
-(Mindestens $2 MB benötigt.)
+(Mindestens $2 MB benÃ¶tigt.)
 
 Starte stattdessen den TWM Windowmanager.
 Achtung: Nicht alle Programme im linke-
-Maustaste-Menü werden funktionieren!
+Maustaste-MenÃ¼ werden funktionieren!
 "
 						;;
 					es)
@@ -397,9 +397,9 @@ No hay suficiente memoria para arrancar $DESKTOP!
 (Se necesitan al menos $2 MB.)
 
 Usando el gestor de ventanas TWM en su lugar.
-Aviso: ¡No todos los programas en
-el menú que aparece al pulsar el botón izquierdo
-del ratón funcionarán aquí!
+Aviso: Â¡No todos los programas en
+el menÃº que aparece al pulsar el botÃ³n izquierdo
+del ratÃ³n funcionarÃ¡n aquÃ­!
 "
 						;;
 					*) 
@@ -419,11 +419,11 @@ work here!
 				case "$LANGUAGE" in
 					de|at|ch)
 						MESSAGE="
-Desktop-Manager '$DESKTOP' wird nicht unterstützt!
+Desktop-Manager '$DESKTOP' wird nicht unterstÃ¼tzt!
 
 Starte stattdessen den TWM Windowmanager.
 Achtung: Nicht alle Programme im linke-
-Maustaste-Menü werden funktionieren!
+Maustaste-MenÃ¼ werden funktionieren!
 "
 						;;
 					es)
@@ -431,9 +431,9 @@ Maustaste-Menü werden funktionieren!
 El gestor de ventanas '$DESKTOP' no esta soportado!
 
 Usando el gestor de ventanas TWM en su lugar.
-Aviso: ¡No todos los programas en
-el menú que aparece al pulsar el botón izquierdo
-del ratón funcionarán aquí!
+Aviso: Â¡No todos los programas en
+el menÃº que aparece al pulsar el botÃ³n izquierdo
+del ratÃ³n funcionarÃ¡n aquÃ­!
 "
 						;;
 					*)
