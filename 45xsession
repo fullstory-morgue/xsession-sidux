@@ -97,8 +97,8 @@ rsync -Ha --ignore-existing /etc/skel/{.acrorc,.Xdefaults,.gimp*,.gconf*,.bashrc
 # --- added for ROX and custom xfce4 & gnome desktops --- mz
 rsync -Har --ignore-existing /etc/skel/{.choices,.rox_choices,.xfce4,Desktop,.gconf,.Eterm,.config,gkrellm2,.irssi,.gnome2,.weechat,.xfwm4rc} $HOME/ 2>/dev/null
 
-# We DO need the .gnome* directory for some programs that set permissions incorrectly
-mkdir -p $HOME/.gnome/accels $HOME/.gnome_private
+# We DO need the .gnome* directory for some programs that set permissions incorrectly EDIT: not needed any more
+# mkdir -p $HOME/.gnome/accels $HOME/.gnome_private
 
 FREESPACE="$(df -k "$HOME" | awk '/^\/|^rootfs/{print $4}')"
 
