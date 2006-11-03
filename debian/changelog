@@ -1,3 +1,10 @@
+xsession-kanotix (0.5.74) unstable; urgency=low
+
+  * don't create ~/.gnome/accels and ~/.gnome_private unconditionally, that's
+    the application's task to do, thanks to slam.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri,  3 Nov 2006 18:00:04 +0100
+
 xsession-kanotix (0.5.73) unstable; urgency=low
 
   * fix wallpaper handling.
@@ -7,7 +14,7 @@ xsession-kanotix (0.5.73) unstable; urgency=low
   * depend on dbus.
   * remove obsolete mozilla-firebird compatibility.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri,  3 Nov 2006 00:08:38 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri,  3 Nov 2006 17:59:55 +0100
 
 xsession-kanotix (0.5.72) unstable; urgency=low
 
