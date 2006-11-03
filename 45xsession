@@ -99,11 +99,6 @@ rsync -Har --ignore-existing /etc/skel/{.choices,.rox_choices,.xfce4,Desktop,.gc
 
 FREESPACE="$(df -k "$HOME" | awk '/^\/|^rootfs/{print $4}')"
 
-if [ ! -e $HOME/.netscape -a "$FREESPACE" -gt 1500 ] && [ -d /etc/skel/.netscape -o -d /usr/share/knoppix/profile/.netscape ]; then
-	rsync -Ha --ignore-existing /etc/skel/.netscape $HOME/ 2>/dev/null
-	[ "$USER" = "$FLL_LIVE_USER" ] && rsync -Ha --ignore-existing /usr/share/knoppix/profile/.netscape $HOME/ 2>/dev/null
-fi
-
 if [ ! -e $HOME/.mozilla -a "$FREESPACE" -gt 1500 ] && [ -d /etc/skel/.mozilla -o -d /usr/share/knoppix/profile/.mozilla ]; then
 	rsync -Ha --ignore-existing /etc/skel/.mozilla $HOME/ 2>/dev/null
 	[ "$USER" = "$FLL_LIVE_USER" ] && rsync -Ha --ignore-existing /usr/share/knoppix/profile/.mozilla $HOME/ 2>/dev/null
@@ -127,12 +122,9 @@ if [ -x /usr/bin/mozilla-firefox ]; then
 	fi
 fi
 	    
-# It seems to be vital for galeon that a netscape bookmarks file exists
-touch $HOME/.netscape/bookmarks.html >/dev/null 2>&1 || true
-
 if [ -n "$LANGUAGE" ]; then
-	# Set mozilla and netscape preferred languages
-	for f in `ls -1 $HOME/.mozilla/*/*/prefs.js $HOME/.netscape/preferences.js 2>/dev/null`; do
+	# Set mozilla's preferred language
+	for f in `ls -1 $HOME/.mozilla/*/*/prefs.js 2>/dev/null`; do
 		echo 'user_pref("intl.accept_languages", "'"$LANGUAGE"', en");' >>"$f"
 		
 		case "$LANGUAGE" in
