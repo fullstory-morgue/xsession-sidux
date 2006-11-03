@@ -1,3 +1,9 @@
+xsession-kanotix (0.5.75) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri,  3 Nov 2006 18:08:04 +0100
+
 xsession-kanotix (0.5.74) unstable; urgency=low
 
   * don't create ~/.gnome/accels and ~/.gnome_private unconditionally, that's
