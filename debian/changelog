@@ -1,8 +1,8 @@
-xsession-kanotix (0.5.76) UNRELEASED; urgency=low
+xsession-kanotix (0.5.76) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * since hal and pmount, kanotix-remount is obsolete.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu,  9 Nov 2006 23:51:15 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 10 Nov 2006 00:01:36 +0100
 
 xsession-kanotix (0.5.75) unstable; urgency=low
 
