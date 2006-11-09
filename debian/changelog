@@ -1,8 +1,10 @@
-xsession-kanotix (0.5.75) UNRELEASED; urgency=low
+xsession-kanotix (0.5.75) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * fix useless bashisms.
+  * fix i18n handling, get rid of the corresponding /etc/sysconfig/
+    dependency - a lot left to do.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri,  3 Nov 2006 18:08:04 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu,  9 Nov 2006 23:49:13 +0100
 
 xsession-kanotix (0.5.74) unstable; urgency=low
 

@@ -9,13 +9,15 @@ if [ -r /etc/default/distro ]; then
 fi
 
 # don't ever start me on an installed system
-[ ! "$FLL_DISTRO_MODE" == "live" ] && exit 0
+[ ! "$FLL_DISTRO_MODE" = "live" ] && exit 0
 
 
 PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/bin:."
 export PATH
 
 umask 022
+
+LANGUAGE="$(echo $LANG | cut -d\_ -f1)"
 
 # Functions shamelessly copied from -autoconfig
 stringinstring() {
@@ -80,7 +82,6 @@ DONTCHANGE=""
 
 # Read default language/keyboard/background image
 [ -f /etc/sysconfig/knoppix ]  && . /etc/sysconfig/knoppix
-[ -f /etc/sysconfig/i18n ]  && . /etc/sysconfig/i18n
 
 [ -f /etc/sysconfig/keyboard ]  && . /etc/sysconfig/keyboard
 
@@ -127,7 +128,7 @@ if [ -n "$LANGUAGE" ]; then
 	for f in `ls -1 $HOME/.mozilla/*/*/prefs.js 2>/dev/null`; do
 		echo 'user_pref("intl.accept_languages", "'"$LANGUAGE"', en");' >>"$f"
 		
-		case "$LANGUAGE" in
+		case "$LANG" in
 			de*|at*|ch*)
 				echo 'user_pref("general.useragent.contentlocale", "AT");' >>"$f"
 				echo 'user_pref("general.useragent.locale", "de-AT");' >>"$f" ;;
@@ -326,8 +327,8 @@ starttwm() {
 	if [ -n "$1" ]; then
 		case "$1" in
 			lowmem)
-				case "$LANGUAGE" in
-					de|at|ch) MESSAGE="
+				case "$LANG" in
+					de*|at*|ch*) MESSAGE="
 Nicht genug Speicher zum Start von $DESKTOP!
 (Mindestens $2 MB benötigt.)
 
@@ -336,7 +337,7 @@ Achtung: Nicht alle Programme im linke-
 Maustaste-Menü werden funktionieren!
 "
 						;;
-					es)
+					es*)
 						MESSAGE="
 No hay suficiente memoria para arrancar $DESKTOP!
 (Se necesitan al menos $2 MB.)
@@ -361,8 +362,8 @@ work here!
 				esac
 				;;
 			invalidwm)
-				case "$LANGUAGE" in
-					de|at|ch)
+				case "$LANG" in
+					de*|at*|ch*)
 						MESSAGE="
 Desktop-Manager '$DESKTOP' wird nicht unterstützt!
 
@@ -371,7 +372,7 @@ Achtung: Nicht alle Programme im linke-
 Maustaste-Menü werden funktionieren!
 "
 						;;
-					es)
+					es*)
 						MESSAGE="
 El gestor de ventanas '$DESKTOP' no esta soportado!
 
