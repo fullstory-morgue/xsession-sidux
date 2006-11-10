@@ -92,15 +92,17 @@ DONTCHANGE=""
 [ -z "$DESKTOP" ] && DESKTOP="kde"
 
 # Copy profiles if not already present
-# --- modified to pull entire /etc/skel and /usr/share/knoppix/profile folder contents,
-# depending on ramdisk space constraints --- bg
+# modified to pull entire /etc/skel and /usr/share/knoppix/profile folder contents,
+# depending on ramdisk space constraints
 
-# Calculate free space on ramdisk
+# Calculate size of /etc/skel and /usr/share/knoppix/profile dirs
+HOME_SIZE="$(( $(du --max-depth=0 /usr/share/knoppix/profile | awk '{ print $1 }') + $(du --max-depth=0 /etc/skel | awk '{ print $1 }') ))"
+
+# Calculate free space on partition containing /home dir
 FREESPACE="$(df -k "$HOME" | awk '/^\/|^rootfs/{print $4}')"
 
-if [ "$FREESPACE" -gt 2000 ]; then
+if [ "$FREESPACE" -gt "$HOME_SIZE" ]; then
 	# if there's space, copy entire /etc/skel and /usr/share/knoppix/profile
-	# bg note - 2000=2MB=about 1.6MB more than necessary at time of writing
 	rsync -Ha --ignore-existing /etc/skel/ $HOME 2>/dev/null
 	[ "$USER" = "$FLL_LIVE_USER" ] && rsync -Ha --ignore-existing /usr/share/knoppix/profile/ "$HOME/" 2>/dev/null
 else

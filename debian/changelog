@@ -1,11 +1,10 @@
-xsession-kanotix (0.5.77) UNRELEASED; urgency=low
+xsession-kanotix (0.5.77) unstable; urgency=low
 
-  * NOT RELEASED YET
   * don't even consider filtering /etc/skel/ or the profile manually, this
     needs to be done by the mastering clean up and the affected packages,
     patch contributed by Bernard Gray.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 10 Nov 2006 02:09:03 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 10 Nov 2006 15:25:21 +0100
 
 xsession-kanotix (0.5.76) unstable; urgency=low
 
