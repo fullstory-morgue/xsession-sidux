@@ -92,27 +92,22 @@ DONTCHANGE=""
 [ -z "$DESKTOP" ] && DESKTOP="kde"
 
 # Copy profiles if not already present
-rsync -Ha --ignore-existing /etc/skel/{.acrorc,.Xdefaults,.gimp*,.gconf*,.bashrc,.nessus*,.links,.local,.lynx*,.qt,.gtk*,.xine,.azap,.szap,.tzap,.czap,.kaxtv,.tecla,.xmms,pctv,tmp} $HOME/ 2>/dev/null
-[ "$USER" = "$FLL_LIVE_USER" ] && rsync -Ha --ignore-existing /usr/share/knoppix/profile/{.acrorc,.Xdefaults,.bashrc,.nessus*,.links,.lynx*,.qt,.xine,.kde,.klik,.zAppRun,.xchat2,tmp,.rox_choices,.xfce4} $HOME/ 2>/dev/null
-[ "$USER" = "$FLL_LIVE_USER" -a -f /usr/share/knoppix/profile/.fonts.cache-1 ] && rsync -H --ignore-existing /usr/share/knoppix/profile/.fonts.cache-1 $HOME/ 2>/dev/null
-# --- added for ROX and custom xfce4 & gnome desktops --- mz
-rsync -Har --ignore-existing /etc/skel/{.choices,.rox_choices,.xfce4,Desktop,.gconf,.Eterm,.config,gkrellm2,.irssi,.gnome2,.weechat,.xfwm4rc} $HOME/ 2>/dev/null
+# --- modified to pull entire /etc/skel and /usr/share/knoppix/profile folder contents,
+# depending on ramdisk space constraints --- bg
 
+# Calculate free space on ramdisk
 FREESPACE="$(df -k "$HOME" | awk '/^\/|^rootfs/{print $4}')"
 
-if [ ! -e $HOME/.mozilla -a "$FREESPACE" -gt 1500 ] && [ -d /etc/skel/.mozilla -o -d /usr/share/knoppix/profile/.mozilla ]; then
-	rsync -Ha --ignore-existing /etc/skel/.mozilla $HOME/ 2>/dev/null
-	[ "$USER" = "$FLL_LIVE_USER" ] && rsync -Ha --ignore-existing /usr/share/knoppix/profile/.mozilla $HOME/ 2>/dev/null
-fi
-
-if [ ! -e $HOME/.mozilla-thunderbird -a "$FREESPACE" -gt 1500 ] && [ -d /etc/skel/.mozilla-thunderbird -o -d /usr/share/knoppix/profile/.mozilla-thunderbird ]; then
-	rsync -Ha --ignore-existing /etc/skel/.mozilla-thunderbird $HOME/ 2>/dev/null
-	[ "$USER" = "$FLL_LIVE_USER" ] && rsync -Ha --ignore-existing /usr/share/knoppix/profile/.mozilla-thunderbird $HOME/ 2>/dev/null
-fi
-
-if [ ! -e $HOME/.firefox -a "$FREESPACE" -gt 1500 ] && [ -d /etc/skel/.firefox -o -d /usr/share/knoppix/profile/.firefox ]; then
-	rsync -Ha --ignore-existing /etc/skel/.firefox $HOME/ 2>/dev/null
-	[ "$USER" = "$FLL_LIVE_USER" ] && rsync -Ha --ignore-existing /usr/share/knoppix/profile/.firefox $HOME/ 2>/dev/null
+if [ "$FREESPACE" -gt 2000 ]; then
+	# if there's space, copy entire /etc/skel and /usr/share/knoppix/profile
+	# bg note - 2000=2MB=about 1.6MB more than necessary at time of writing
+	rsync -Ha --ignore-existing /etc/skel/ $HOME 2>/dev/null
+	[ "$USER" = "$FLL_LIVE_USER" ] && rsync -Ha --ignore-existing /usr/share/knoppix/profile/ "$HOME/" 2>/dev/null
+else
+	# if there's not enough space, copy important dir only
+	# XXX - not sure how "important" .klik and .zAppRun are...- bg
+	rsync -Ha --ignore-existing /etc/skel/{.Xdefaults,.bashrc,.qt,.gtk*} $HOME/ 2>/dev/null
+	[ "$USER" = "$FLL_LIVE_USER" ] && rsync -Ha --ignore-existing /usr/share/knoppix/profile/{.Xdefaults,.bashrc,.qt,.kde,.klik,.zAppRun} "$HOME/" 2>/dev/null
 fi
 
 # Share Mozilla plugins with Firefox
