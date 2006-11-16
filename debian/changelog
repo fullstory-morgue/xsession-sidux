@@ -1,8 +1,9 @@
-xsession-kanotix (0.5.78) UNRELEASED; urgency=low
+xsession-kanotix (0.5.78) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * use generic x-terminal-emulator support instead of harcoded application,
+    thanks to x-un-i.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 10 Nov 2006 15:26:38 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 16 Nov 2006 23:07:19 +0100
 
 xsession-kanotix (0.5.77) unstable; urgency=low
 

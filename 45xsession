@@ -316,9 +316,8 @@ EOF
 # an error message if it was started as such.
 # Paraeters: "reasoncode" "reasoncode-specific description"
 starttwm() {
-	XTERM=rxvt
-	type -path rxvt >/dev/null 2>&1 || XTERM=xterm
-	$XTERM -geometry +0-0 -bg black -fg green -T Shell &
+	XTERM=x-terminal-emulator
+	$XTERM -geometry +0-0 -T Shell &
 
 	MESSAGE=""
 	if [ -n "$1" ]; then
