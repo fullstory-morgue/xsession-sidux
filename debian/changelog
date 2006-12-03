@@ -1,8 +1,10 @@
-xsession-kanotix (0.5.79) UNRELEASED; urgency=low
+xsession-sidux (0.5.79) UNRELEASED; urgency=low
 
   * NOT RELEASED YET
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 16 Nov 2006 23:08:45 +0100
+  * Initial version for sidux
+
+ -- Joaquim Boura <x-un-i@sidux.com>  Sun,  3 Dec 2006 12:54:24 +0100
 
 xsession-kanotix (0.5.78) unstable; urgency=low
 

@@ -1,14 +1,14 @@
-Source: xsession-kanotix
+Source: xsession-sidux
 Section: base
 Priority: optional
 Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
 Build-Depends: cdbs (>= 0.4.23-1.1), debhelper (>= 5.0.0)
 Standards-Version: 3.7.2
 
-Package: xsession-kanotix
+Package: xsession-sidux
 Architecture: all
 Pre-Depends: distro-defaults
-Depends: etcskel-kanotix, rsync, initscripts-kanotix-live, dbus, xterm | x-terminal-emulator
-Conflicts: kanotix-remountrw, mkdesktophdicons-kanotix
-Description: Automatic Xsession startup script for KANOTIX
+Depends: etcskel-sidux, rsync, initscripts-sidux-live, dbus, xterm | x-terminal-emulator
+Conflicts: kanotix-remountrw, mkdesktophdicons-kanotix, xsession-kanotix 
+Description: Automatic Xsession startup script for Sidux
  Only for live usage, as this overrides the ordinary startup methods.

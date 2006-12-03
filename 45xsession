@@ -256,7 +256,7 @@ X-KDE-autostart-after=kdesktop" > $HOME/.kde/Autostart/compiz.desktop
 
 		if [ -z "$BACKGROUND" -o ! -e "$BACKGROUND" ]; then
 			for i in png jpg gif; do
-				BACKGROUND=usr/share/wallpapers/kanotix.$i
+				BACKGROUND=usr/share/wallpapers/sidux.$i
 				[ -e "$BACKGROUND" ] && break
 			done
 		fi
