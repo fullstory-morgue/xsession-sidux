@@ -1,11 +1,13 @@
-xsession-sidux (0.5.79) UNRELEASED; urgency=low
+xsession-sidux (0.5.79) unstable; urgency=low
 
-  * NOT RELEASED YET
-
+  [ Joaquim Boura ]
   * Initial version for sidux
   * fixed mispelling
 
- -- Joaquim Boura <x-un-i@sidux.com>  Mon,  4 Dec 2006 15:16:50 +0100
+  [ Stefan Lippers-Hollmann ]
+  * minor debian/control cosmetics.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue,  5 Dec 2006 14:57:01 +0100
 
 xsession-kanotix (0.5.78) unstable; urgency=low
 
