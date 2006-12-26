@@ -1,3 +1,9 @@
+xsession-sidux (0.5.81) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 26 Dec 2006 13:57:22 +0100
+
 xsession-sidux (0.5.80) unstable; urgency=low
 
   * all user profile files go to /usr/share/user-profile.
