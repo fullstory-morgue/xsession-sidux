@@ -1,8 +1,8 @@
-xsession-sidux (0.5.81) UNRELEASED; urgency=low
+xsession-sidux (0.5.81) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * remove remaining kanotix branding.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 26 Dec 2006 13:57:22 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon,  1 Jan 2007 21:04:44 +0100
 
 xsession-sidux (0.5.80) unstable; urgency=low
 

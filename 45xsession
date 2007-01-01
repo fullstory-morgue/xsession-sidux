@@ -2,8 +2,9 @@
 
 # override tool behaviour through distro-defaults
 FLL_DISTRO_MODE="installed"
-FLL_LIVE_USER="knoppix"
-FLL_IMAGE_DIR="KNOPPIX"
+FLL_DISTRO_NAME="sidux"
+FLL_LIVE_USER="sidux"
+FLL_IMAGE_DIR="SIDUX"
 if [ -r /etc/default/distro ]; then
 	source /etc/default/distro
 fi
@@ -195,9 +196,9 @@ startkde() {
 	fi
 
 	if [ -e "$INDEXFILE" ]; then
-		cat >> $HOME/Desktop/KANOTIX.desktop <<EOF
+		cat >> "$HOME/Desktop/$FLL_DISTRO_NAME.desktop" <<EOF
 [Desktop Entry]
-Name=KANOTIX
+Name=$FLL_DISTRO_NAME
 # Exec=kfmclient openProfile webbrowsing $INDEXFILE
 Exec=konqueror --geometry 950x700+35+20 file:$INDEXFILE
 Type=Application
@@ -205,7 +206,7 @@ Icon=html
 Terminal=0
 EOF
 		if ! checkbootparm "nointro"; then
-			ln $HOME/Desktop/KANOTIX.desktop $HOME/.kde/Autostart/showindex.desktop
+			ln "$HOME/Desktop/$FLL_DISTRO_NAME.desktop" "$HOME/.kde/Autostart/showindex.desktop"
 		fi
 	fi
 
