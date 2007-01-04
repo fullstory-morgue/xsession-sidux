@@ -1,4 +1,4 @@
-xsession-sidux (0.5.83) UNRELEASED; urgency=low
+xsession-sidux (0.5.83) unstable; urgency=low
 
   * now uses $FLL_CDROM_INDEX for name of desktop link to /cdrom/index.html
 
