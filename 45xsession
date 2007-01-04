@@ -5,6 +5,7 @@ FLL_DISTRO_MODE="installed"
 FLL_DISTRO_NAME="sidux"
 FLL_LIVE_USER="sidux"
 FLL_IMAGE_DIR="SIDUX"
+FLL_CDROM_INDEX="Sidux Manual"
 if [ -r /etc/default/distro ]; then
 	source /etc/default/distro
 fi
@@ -198,13 +199,14 @@ startkde() {
 	if [ -e "$INDEXFILE" ]; then
 		cat >> "$HOME/Desktop/$FLL_DISTRO_NAME.desktop" <<EOF
 [Desktop Entry]
-Name=$FLL_DISTRO_NAME
+Name=$FLL_CDROM_INDEX
 # Exec=kfmclient openProfile webbrowsing $INDEXFILE
 Exec=konqueror --geometry 950x700+35+20 file:$INDEXFILE
 Type=Application
 Icon=html
 Terminal=0
 EOF
+		# XXX - FIXME (I don't seem to be working)
 		if ! checkbootparm "nointro"; then
 			ln "$HOME/Desktop/$FLL_DISTRO_NAME.desktop" "$HOME/.kde/Autostart/showindex.desktop"
 		fi
