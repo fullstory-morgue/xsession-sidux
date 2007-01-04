@@ -1,3 +1,9 @@
+xsession-sidux (0.5.84) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu,  4 Jan 2007 23:33:12 +0100
+
 xsession-sidux (0.5.83) unstable; urgency=low
 
   * now uses $FLL_CDROM_INDEX for name of desktop link to /cdrom/index.html
