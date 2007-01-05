@@ -1,20 +1,14 @@
-xsession-sidux (0.5.84) UNRELEASED; urgency=low
+xsession-sidux (0.5.84) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * fixed index.html (sidux manual) autostart.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu,  4 Jan 2007 23:33:12 +0100
+ -- Bernard Gray <bernard.gray@gmail.com>  Thu,  5 Jan 2007 13:04:11 +0100
 
 xsession-sidux (0.5.83) unstable; urgency=low
 
   * now uses $FLL_CDROM_INDEX for name of desktop link to /cdrom/index.html
 
  -- Bernard Gray aka cleary <bernard.gray@gmail.com>  Thu,  4 Jan 2007 17:30:45 +1000
-
-xsession-sidux (0.5.82) UNRELEASED; urgency=low
-
-  * NOT RELEASED YET
-
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon,  1 Jan 2007 21:05:59 +0100
 
 xsession-sidux (0.5.81) unstable; urgency=low
 
