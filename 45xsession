@@ -206,8 +206,8 @@ Type=Application
 Icon=html
 Terminal=0
 EOF
-		# XXX - FIXME (I don't seem to be working)
 		if ! checkbootparm "nointro"; then
+			mkdir -p $HOME/.kde/Autostart
 			ln "$HOME/Desktop/$FLL_DISTRO_NAME.desktop" "$HOME/.kde/Autostart/showindex.desktop"
 		fi
 	fi
