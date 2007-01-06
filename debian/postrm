@@ -4,9 +4,9 @@ case "$1" in
 		# This must be in /etc/inittab because xsession doesn't return
 		update-rc.d -f xsession remove 2>/dev/null
 
-		sed -i	-e 's/^# Run X Window session from CDROM in runlevel 5\n//g' \
-			-e 's|^w5:5:wait:/bin/sleep 2\n||g' \
-			-e 's|^x5:5:wait:/etc/init.d/xsession start\n||g;' \
+		sed -i	-e /\#[[:space:]]Run[[:space:]]X[[:space:]]Window[[:space:]]session[[:space:]]from[[:space:]]CDROM[[:space:]]in[[:space:]]runlevel[[:space:]]5/d \
+			-e /w5\:5\:wait\:\\/bin\\/sleep[[:space:]]2/d \
+			-e /x5\:5\:wait\:\\/etc\\/init\\.d\\/xsession[[:space:]]start/d \
 				/etc/inittab
 	        ;;
 	*)
