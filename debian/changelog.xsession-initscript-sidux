@@ -1,0 +1,208 @@
+xsession-initscript-sidux (0.6.17) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue,  2 Jan 2007 15:36:04 +0100
+
+xsession-initscript-sidux (0.6.16) unstable; urgency=low
+
+  * fix defaults for sidux.
+  * fix first bashism.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue,  2 Jan 2007 15:34:46 +0100
+
+xsession-initscript-sidux (0.6.15) unstable; urgency=low
+
+  * Use /bin/sh to run /etc/X11/xinit/xinitrc
+
+ -- Niall Walsh <niallwalsh@users.berlios.de>  Wed,  6 Dec 2006 14:41:59 +0000
+
+xsession-initscript-sidux (0.6.14) unstable; urgency=low
+
+  [ Joaquim Boura ]
+  * Initial version for sidux
+  * fixed mispelling
+
+  [ Stefan Lippers-Hollmann ]
+  * minor debian/control cosmetics:
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue,  5 Dec 2006 15:00:02 +0100
+
+xsession-initscript-kanotix (0.6.13) unstable; urgency=low
+
+  * remove useless bashism from maintainer scripts.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu,  9 Nov 2006 23:43:19 +0100
+
+xsession-initscript-kanotix (0.6.12) unstable; urgency=low
+
+  * don't add /usr/X11R6/bin/ to search path.
+  * standardize on X_CONF and FLL_LIVE_USER.
+  * remove compatibilty glue for XFree86 4.x and kernel < 2.6.
+  * streamline code flow.
+  * add missing dependency on xf86config-kanotix.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri,  3 Nov 2006 20:07:02 +0100
+
+xsession-initscript-kanotix (0.6.11) unstable; urgency=low
+
+  * fix lintian errors.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu,  2 Nov 2006 14:26:25 +0100
+
+xsession-initscript-kanotix (0.6.10) unstable; urgency=low
+
+  * Do not probe 32 bit with Xorg.
+
+ -- Joerg Schirottke <master@kanotix.com>  Mon,  2 Oct 2006 00:09:33 +0200
+
+xsession-initscript-kanotix (0.6.9) unstable; urgency=low
+
+  * Disable TCP listening. 
+
+ -- Joerg Schirottke <master@kanotix.com>  Thu,  7 Sep 2006 14:00:27 +0200
+
+xsession-initscript-kanotix (0.6.8) unstable; urgency=low
+
+  * Xorg 7 support. 
+
+ -- Joerg Schirottke <master@kanotix.com>  Fri, 14 Apr 2006 00:16:06 +0200
+
+xsession-initscript-kanotix (0.6.7) unstable; urgency=low
+
+  * bump compat level to 5.
+  * add missing dependency for initscripts-kanotix-live.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 13 Mar 2006 10:39:53 +0100
+
+xsession-initscript-kanotix (0.6.6) unstable; urgency=low
+
+  * remove cdbs auto-update feature.
+  * bump compat level to 5.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 16 Feb 2006 11:11:11 +0100
+
+xsession-initscript-kanotix (0.6.5) unstable; urgency=low
+
+  * use 915resolution instead of 855resolution.
+  
+ -- Joerg Schirottke <master@kanotix.com>  Fri, 20 Jan 2006 16:07:29 +0100
+
+xsession-initscript-kanotix (0.6.4) unstable; urgency=low
+
+  * changed res detection for i810 hack. 
+
+ -- Joerg Schirottke <master@kanotix.com>  Wed,  7 Dec 2005 11:50:57 +0100
+
+xsession-initscript-kanotix (0.6.3) unstable; urgency=low
+
+  * add i810 svga mode hack.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 15 Oct 2005 22:47:51 +0200
+
+xsession-initscript-kanotix (0.6.2) unstable; urgency=low
+
+  * re- indent.
+  * add distro-defaults support.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 10 Oct 2005 17:17:45 +0200
+
+xsession-initscript-kanotix (0.6.1) unstable; urgency=low
+
+  * fix postrm.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri,  9 Sep 2005 23:53:16 +0200
+
+xsession-initscript-kanotix (0.6) unstable; urgency=low
+
+  * initial X.org support.
+  * implement force-reload. 
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 21 Jun 2005 23:38:17 +0200
+
+xsession-initscript-kanotix (0.5-13) unstable; urgency=low
+
+  * minor fixes/ enhancements. 
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed,  2 Feb 2005 13:11:49 +0100
+
+xsession-initscript-kanotix (0.5-12) unstable; urgency=low
+
+  * Fork for Kanotix compatibility.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 21 Dec 2004 23:41:31 +0100
+
+xsession-initscript-knoppix (0.5-12) unstable; urgency=low
+
+  * Added Fabians "chose next runlevel" patch
+
+ -- Knoppix User <knopper@linuxtag.net>  Sun, 18 Apr 2004 19:54:01 +0200
+
+xsession-initscript-knoppix (0.5-11) unstable; urgency=low
+
+  * Load specific agpgart module for cards
+
+ -- Klaus Knopper <knopper@linuxtag.net>  Fri, 20 Feb 2004 12:17:25 +0100
+
+xsession-initscript-knoppix (0.5-10) unstable; urgency=low
+
+  * Don't shutdown if stopped with /etc/init.d/xsession stop|restart
+
+ -- Klaus Knopper <knopper@linuxtag.net>  Tue, 13 Jan 2004 00:55:08 +0100
+
+xsession-initscript-knoppix (0.5-9) unstable; urgency=low
+
+  * Hardwired dpi to 75
+
+ -- Klaus Knopper <knopper@linuxtag.net>  Mon, 24 Feb 2003 19:45:34 +0100
+
+xsession-initscript-knoppix (0.5-8) unstable; urgency=low
+
+  * Added missing dependency to xloadimage, Klaus Knopper-graphics
+  * Scale and smooth image
+
+ -- Klaus Knopper <knopper@linuxtag.net>  Thu, 20 Feb 2003 00:31:28 +0100
+
+xsession-initscript-knoppix (0.5-7) unstable; urgency=low
+
+  * Added auto-loading of DRM modules
+
+ -- Klaus Knopper <knopper@linuxtag.net>  Mon,  9 Sep 2002 21:13:28 +0200
+
+xsession-initscript-knoppix (0.5-6) unstable; urgency=low
+
+  * Added -q option to ogg123
+
+ -- Klaus Knopper <knopper@linuxtag.net>  Sat, 17 Aug 2002 17:15:59 +0200
+
+xsession-initscript-knoppix (0.5-5) unstable; urgency=low
+
+  * Add 64k buffer to ogg123 while playing sound, force oss driver
+
+ -- Klaus Knopper <knopper@linuxtag.net>  Thu,  9 May 2002 23:49:28 +0200
+
+xsession-initscript-knoppix (0.5-4) unstable; urgency=low
+
+  * Don't start X if brltty is active.
+
+ -- Klaus Knopper <knopper@linuxtag.net>  Sat, 13 Apr 2002 02:42:51 +0200
+
+xsession-initscript-knoppix (0.5-3) unstable; urgency=low
+
+  * Added vesa and fbdev X-Server as final fallback
+
+ -- Klaus Knopper <knopper@linuxtag.net>  Sat, 23 Mar 2002 18:26:53 +0100
+
+xsession-initscript-knoppix (0.5-2) unstable; urgency=low
+
+  * Changed location of background to /cdrom/KNOPPIX/background.gif
+    (if present)
+
+ -- Klaus Knopper <knopper@linuxtag.net>  Sat, 23 Mar 2002 14:24:17 +0100
+
+xsession-initscript-knoppix (0.5-1) unstable; urgency=low
+
+  * Initial release
+
+ -- Klaus Knopper <knopper@knopper.net>  Mon, 14 May 2001 20:57:25 +0100
+
