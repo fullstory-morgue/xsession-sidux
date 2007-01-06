@@ -1,1 +1,2 @@
-45xsession etc/X11/Xsession.d/
+45xsession	etc/X11/Xsession.d/
+xsession	etc/init.d/

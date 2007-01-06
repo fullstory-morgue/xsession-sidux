@@ -1,8 +1,10 @@
-xsession-sidux (0.5.85) UNRELEASED; urgency=low
+xsession-sidux (0.7.0) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * merge xsession-initscript-sidux 0.6.16 into xsession-sidux 0.5.84, bump
+    version number accordingly.
+  * adapt description, section and priority.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri,  5 Jan 2007 17:17:32 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat,  6 Jan 2007 20:11:47 +0100
 
 xsession-sidux (0.5.84) unstable; urgency=low
 
