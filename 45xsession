@@ -271,7 +271,7 @@ X-KDE-autostart-after=kdesktop" > $HOME/.kde/Autostart/compiz.desktop
 		touch $HOME/.kde/share/config/kxkbrc
 		rm -f $HOME/.kde/share/config/kxkbrc.tmp
 
-		sed -e 's/^LayoutList=.*$/LayoutList='"$KDEKEYBOARDS"'/' \
+		sed -e 's/^LayoutList=.*$/LayoutList='"$FLL_KDEKEYBOARDS"'/' \
 		    $HOME/.kde/share/config/kxkbrc > $HOME/.kde/share/config/kxkbrc.tmp
 		\mv -f $HOME/.kde/share/config/kxkbrc.tmp $HOME/.kde/share/config/kxkbrc
 		touch -r /etc/skel/.kde/share/config/kxkbrc $HOME/.kde/share/config/kxkbrc 2>/dev/null
