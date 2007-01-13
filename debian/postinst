@@ -18,9 +18,12 @@ case "$1" in
 		update-rc.d xsession stop 10 0 1 2 3 4 6 .
 		grep -q "x5:5:wait:/etc/init.d/xsession start" /etc/inittab && exit 0
 		cat >>/etc/inittab <<EOF
+
+#-- xsession-sidux start
 # Run X Window session from CDROM in runlevel 5
 w5:5:wait:/bin/sleep 2
 x5:5:wait:/etc/init.d/xsession start
+#-- xsession-sidux end
 EOF
 		;;
 
