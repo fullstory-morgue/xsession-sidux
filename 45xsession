@@ -82,6 +82,10 @@ DONTCHANGE=""
 # We need to source this so that the login screens get translated
 [ -f /etc/profile ] && . /etc/profile
 
+# debian's /etc/profile will only give a path with /sbin to root
+PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/bin"
+export PATH
+
 # Read default language/keyboard/background image
 [ -f /etc/sysconfig/knoppix ]  && . /etc/sysconfig/knoppix
 
