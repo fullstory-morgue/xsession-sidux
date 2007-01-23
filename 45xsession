@@ -118,6 +118,9 @@ else
 	[ "$USER" = "$FLL_LIVE_USER" ] && rsync -Ha --ignore-existing /usr/share/user-profile/profile/{.Xdefaults,.bashrc,.qt,.kde,.klik,.zAppRun} "$HOME/" 2>/dev/null
 fi
 
+grep alias\ su /home/$FLL_LIVE_USER/.bashrc > /dev/null || echo "alias su=\"sudo su\"" >> /home/$FLL_LIVE_USER/.bashrc
+grep alias\ sux /home/$FLL_LIVE_USER/.bashrc > /dev/null || echo "alias sux=\"sudo sux\"" >> /home/$FLL_LIVE_USER/.bashrc
+
 # Share Mozilla plugins with Firefox
 if [ -x /usr/bin/mozilla-firefox ]; then
 	if [ -e $HOME/.mozilla ]; then
