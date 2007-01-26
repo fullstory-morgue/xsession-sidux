@@ -118,8 +118,16 @@ else
 	[ "$USER" = "$FLL_LIVE_USER" ] && rsync -Ha --ignore-existing /usr/share/user-profile/profile/{.Xdefaults,.bashrc,.qt,.kde,.klik,.zAppRun} "$HOME/" 2>/dev/null
 fi
 
+# add aliases for sudo and su
 grep alias\ su /home/$FLL_LIVE_USER/.bashrc > /dev/null || echo "alias su=\"sudo su\"" >> /home/$FLL_LIVE_USER/.bashrc
 grep alias\ sux /home/$FLL_LIVE_USER/.bashrc > /dev/null || echo "alias sux=\"sudo sux\"" >> /home/$FLL_LIVE_USER/.bashrc
+
+# configure kdesu to use sudo for the live user
+if kde-config && [ -r /home/$FLL_LIVE_USER/.kde/share/config/kdesurc ] ; then
+	mkdir -p /home/$FLL_LIVE_USER/.kde/share/config/
+	echo "[super-user-command]" > /home/$FLL_LIVE_USER/.kde/share/config/kdesurc
+	echo "super-user-command=sudo" >> /home/$FLL_LIVE_USER/.kde/share/config/kdesurc
+fi
 
 # Share Mozilla plugins with Firefox
 if [ -x /usr/bin/mozilla-firefox ]; then
