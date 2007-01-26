@@ -1,9 +1,5 @@
-xsession-sidux (0.7.6) UNRELEASED; urgency=low
+xsession-sidux (0.7.6) unstable; urgency=low
 
-  [ Stefan Lippers-Hollmann ]
-  * NOT RELEASED YET
-
-  [ Niall Walsh ]
   * Set kdesu to use sudo as a backend
 
  -- Niall Walsh <niallwalsh@users.berlios.de>  Fri, 26 Jan 2007 04:25:59 +0000
