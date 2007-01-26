@@ -1,3 +1,9 @@
+xsession-sidux (0.7.7) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 26 Jan 2007 15:40:55 +0100
+
 xsession-sidux (0.7.6) unstable; urgency=low
 
   * Set kdesu to use sudo as a backend
