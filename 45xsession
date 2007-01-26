@@ -123,7 +123,7 @@ grep alias\ su /home/$FLL_LIVE_USER/.bashrc > /dev/null || echo "alias su=\"sudo
 grep alias\ sux /home/$FLL_LIVE_USER/.bashrc > /dev/null || echo "alias sux=\"sudo sux\"" >> /home/$FLL_LIVE_USER/.bashrc
 
 # configure kdesu to use sudo for the live user
-if kde-config && [ -r /home/$FLL_LIVE_USER/.kde/share/config/kdesurc ] ; then
+if kde-config && [ ! -r /home/$FLL_LIVE_USER/.kde/share/config/kdesurc ] ; then
 	mkdir -p /home/$FLL_LIVE_USER/.kde/share/config/
 	echo "[super-user-command]" > /home/$FLL_LIVE_USER/.kde/share/config/kdesurc
 	echo "super-user-command=sudo" >> /home/$FLL_LIVE_USER/.kde/share/config/kdesurc
