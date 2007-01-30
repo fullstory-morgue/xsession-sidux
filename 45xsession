@@ -191,7 +191,7 @@ startkde() {
 		[ "$USER" = "$FLL_LIVE_USER" ] && rsync -Ha --ignore-existing /usr/share/user-profile/profile/{.kde*,Desktop} $HOME/ 2>/dev/null
 	else
 		# Only regenerate the config and Desktop files if missing
-		\mkdir -p $HOME/.kde/share $HOME/Desktop
+		mkdir -p $HOME/.kde/share $HOME/Desktop
 		rsync -Ha --ignore-existing /etc/skel/.kde/share/* $HOME/.kde/share/ 2>/dev/null
 		[ "$USER" = "$FLL_LIVE_USER" ] && rsync -Ha --ignore-existing /usr/share/user-profile/profile/.kde/share/* $HOME/.kde/share/ 2>/dev/null
 		rsync -Ha --ignore-existing /etc/skel/Desktop/* $HOME/Desktop/ 2>/dev/null
