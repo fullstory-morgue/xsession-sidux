@@ -221,7 +221,7 @@ Type=Application
 Icon=html
 Terminal=0
 EOF
-		if ! checkbootparm "nointro"; then
+		if ! checkbootparam "nointro"; then
 			mkdir -p $HOME/.kde/Autostart
 			ln "$HOME/Desktop/$FLL_DISTRO_NAME.desktop" "$HOME/.kde/Autostart/showindex.desktop"
 		fi
@@ -230,7 +230,7 @@ EOF
 	# Beryl
 	rm -f $HOME/.kde/Autostart/beryl.desktop
 	
-	if checkbootparm "beryl" && [ -x /usr/bin/beryl-manager ]; then
+	if checkbootparam "beryl" && [ -x /usr/bin/beryl-manager ]; then
 		mkdir -p $HOME/.kde/Autostart
 		echo "[Desktop Entry]
 Encoding=UTF-8
