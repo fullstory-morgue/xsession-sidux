@@ -129,12 +129,19 @@ if kde-config && [ ! -r /home/$FLL_LIVE_USER/.kde/share/config/kdesurc ] ; then
 	echo "super-user-command=sudo" >> /home/$FLL_LIVE_USER/.kde/share/config/kdesurc
 fi
 
-# Share Mozilla plugins with Firefox
+# Share Mozilla plugins with Firefox (and mv profile)
 if [ -x /usr/bin/mozilla-firefox ]; then
 	if [ -e $HOME/.mozilla ]; then
 		mkdir -p $HOME/.mozilla/plugins $HOME/.firefox
 		[ -e $HOME/.firefox/plugins ] || ln -s ../.mozilla/plugins $HOME/.firefox/plugins
 	fi
+	MOZPROFILE=$(awk '/Profile/{if (/Profile0/){inprof=1}else{inprof=0}}/Path/{if(inprof){print;}}' \
+		$HOME/.mozilla/firefox/profiles.ini | sed 's/^Path\=//' )
+	NEWMOZPROFILE=$(mawk 'BEGIN{print int(10000000 * rand())}')".default"
+	mv $HOME/.mozilla/firefox/$MOZPROFILE $HOME/.mozilla/firefox/$NEWMOZPROFILE && \
+		sed 's/Path='$MOZPROFILE'/Path='$NEWMOZPROFILE'/' \
+		$HOME/.mozilla/firefox/profiles.ini > $HOME/.mozilla/firefox/profiles.ini.new && \
+		mv -f $HOME/.mozilla/firefox/profiles.ini.new $HOME/.mozilla/firefox/profiles.ini
 fi
 	    
 if [ -n "$LANGUAGE" ]; then

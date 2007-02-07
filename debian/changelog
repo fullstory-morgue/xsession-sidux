@@ -1,8 +1,13 @@
 xsession-sidux (0.7.8) UNRELEASED; urgency=low
 
+  [ Stefan Lippers-Hollmann ]
   * NOT RELEASED YET
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 30 Jan 2007 16:17:25 +0100
+  [ Niall Walsh ]
+  * Randomise the default $HOME/.mozilla/firefox profile path and update
+    profiles.ini
+
+ -- Niall Walsh <niallwalsh@users.berlios.de>  Wed,  7 Feb 2007 01:54:25 +0000
 
 xsession-sidux (0.7.7) unstable; urgency=low
 
