@@ -1,9 +1,5 @@
-xsession-sidux (0.7.8) UNRELEASED; urgency=low
+xsession-sidux (0.7.8) unstable; urgency=low
 
-  [ Stefan Lippers-Hollmann ]
-  * NOT RELEASED YET
-
-  [ Niall Walsh ]
   * Randomise the default $HOME/.mozilla/firefox profile path and update
     profiles.ini
 
