@@ -1,8 +1,12 @@
 xsession-sidux (0.7.9) UNRELEASED; urgency=low
 
+  [ Stefan Lippers-Hollmann ]
   * NOT RELEASED YET
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu,  8 Feb 2007 01:59:39 +0100
+  [ Bernard Gray ]
+  * consider FLL_CDROM_INDEX_ICON  
+
+ -- Bernard Gray <bernard.gray@gmail.com>  Sun, 18 Feb 2007 10:22:42 +1100
 
 xsession-sidux (0.7.8) unstable; urgency=low
 

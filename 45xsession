@@ -6,6 +6,7 @@ FLL_DISTRO_NAME="sidux"
 FLL_LIVE_USER="sidux"
 FLL_IMAGE_DIR="SIDUX"
 FLL_CDROM_INDEX="Sidux Manual"
+FLL_CDROM_INDEX_ICON="html"
 if [ -r /etc/default/distro ]; then
 	source /etc/default/distro
 fi
@@ -225,7 +226,7 @@ Name=$FLL_CDROM_INDEX
 # Exec=kfmclient openProfile webbrowsing $INDEXFILE
 Exec=konqueror --geometry 950x700+35+20 file:$INDEXFILE
 Type=Application
-Icon=html
+Icon=$FLL_CDROM_INDEX_ICON
 Terminal=0
 EOF
 		if ! checkbootparam "nointro"; then
