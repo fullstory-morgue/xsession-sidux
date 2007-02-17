@@ -8,7 +8,7 @@ Standards-Version: 3.7.2
 Package: xsession-sidux
 Architecture: all
 Pre-Depends: distro-defaults
-Depends: etcskel-sidux, rsync, initscripts-sidux-live, dbus, xterm | x-terminal-emulator, sidux-graphics, xloadimage, distro-defaults, xorgconfig-sidux
+Depends: etcskel-sidux, rsync, initscripts-sidux-live, dbus, xterm | x-terminal-emulator, sidux-graphics, xloadimage, xorgconfig-sidux
 Conflicts: kanotix-remountrw, mkdesktophdicons-kanotix, xsession-kanotix, xsession-initscript-kanotix
 Replaces: xsession-initscript-sidux (<< 0.7)
 Suggests: 915resolution

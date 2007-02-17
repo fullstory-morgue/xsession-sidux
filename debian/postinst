@@ -3,7 +3,7 @@
 # override tool behaviour through distro-defaults
 FLL_DISTRO_MODE="installed"
 if [ -r /etc/default/distro ]; then
-	source /etc/default/distro
+	. /etc/default/distro
 fi
 
 if [ ! "$FLL_DISTRO_MODE" = "live" ]; then
