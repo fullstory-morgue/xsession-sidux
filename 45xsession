@@ -131,18 +131,14 @@ if kde-config && [ ! -r /home/$FLL_LIVE_USER/.kde/share/config/kdesurc ] ; then
 fi
 
 # Share Mozilla plugins with Firefox (and mv profile)
-if [ -x /usr/bin/mozilla-firefox ]; then
-	if [ -e $HOME/.mozilla ]; then
-		mkdir -p $HOME/.mozilla/plugins $HOME/.firefox
-		[ -e $HOME/.firefox/plugins ] || ln -s ../.mozilla/plugins $HOME/.firefox/plugins
-	fi
+if [ -x /usr/bin/iceweasel ]; then
 	MOZPROFILE=$(awk '/Profile/{if (/Profile0/){inprof=1}else{inprof=0}}/Path/{if(inprof){print;}}' \
-		$HOME/.mozilla/firefox/profiles.ini | sed 's/^Path\=//' )
+		$HOME/.mozilla/iceweasel/profiles.ini | sed 's/^Path\=//' )
 	NEWMOZPROFILE=$(mawk 'BEGIN{print int(10000000 * rand())}')".default"
-	mv $HOME/.mozilla/firefox/$MOZPROFILE $HOME/.mozilla/firefox/$NEWMOZPROFILE && \
+	mv $HOME/.mozilla/iceweasel/$MOZPROFILE $HOME/.mozilla/iceweasel/$NEWMOZPROFILE && \
 		sed 's/Path='$MOZPROFILE'/Path='$NEWMOZPROFILE'/' \
-		$HOME/.mozilla/firefox/profiles.ini > $HOME/.mozilla/firefox/profiles.ini.new && \
-		mv -f $HOME/.mozilla/firefox/profiles.ini.new $HOME/.mozilla/firefox/profiles.ini
+		$HOME/.mozilla/iceweasel/profiles.ini > $HOME/.mozilla/iceweasel/profiles.ini.new && \
+		mv -f $HOME/.mozilla/iceweasel/profiles.ini.new $HOME/.mozilla/iceweasel/profiles.ini
 fi
 	    
 if [ -n "$LANGUAGE" ]; then

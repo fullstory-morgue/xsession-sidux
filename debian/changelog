@@ -1,8 +1,8 @@
-xsession-sidux (0.7.11) UNRELEASED; urgency=low
+xsession-sidux (0.7.11) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * iceweasel uses $HOME/.mozilla/iceweasel/ now.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 18 Feb 2007 00:37:07 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 19 Feb 2007 18:48:39 +0100
 
 xsession-sidux (0.7.10) unstable; urgency=low
 
