@@ -139,6 +139,9 @@ if [ -x /usr/bin/iceweasel ]; then
 		sed 's/Path='$MOZPROFILE'/Path='$NEWMOZPROFILE'/' \
 		$HOME/.mozilla/iceweasel/profiles.ini > $HOME/.mozilla/iceweasel/profiles.ini.new && \
 		mv -f $HOME/.mozilla/iceweasel/profiles.ini.new $HOME/.mozilla/iceweasel/profiles.ini
+	
+	# who knows how it will be called tomorrow...
+	ln -fs iceweasel $HOME/.mozilla/firefox
 fi
 	    
 if [ -n "$LANGUAGE" ]; then
