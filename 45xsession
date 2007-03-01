@@ -49,9 +49,6 @@ checkbootparam() {
 	return "$?"
 }
 
-# needed for beryl/compiz
-sh /etc/X11/Xsession.d/75dbus_dbus-launch
-
 [ -n "$KDEDIR" ] || KDEDIR="/usr"
 export KDEDIR
 
@@ -232,38 +229,6 @@ EOF
 			mkdir -p $HOME/.kde/Autostart
 			ln "$HOME/Desktop/$FLL_DISTRO_NAME.desktop" "$HOME/.kde/Autostart/showindex.desktop"
 		fi
-	fi
-
-	# Beryl
-	rm -f $HOME/.kde/Autostart/beryl.desktop
-	
-	if checkbootparam "beryl" && [ -x /usr/bin/beryl-manager ]; then
-		mkdir -p $HOME/.kde/Autostart
-		echo "[Desktop Entry]
-Encoding=UTF-8
-Exec=beryl-manager
-GenericName[de_DE]=
-StartupNotify=false
-Terminal=false
-TerminalOptions=
-Type=Application
-X-KDE-autostart-after=kdesktop" > $HOME/.kde/Autostart/beryl.desktop
-		fi
-
-	# Compiz
-	rm -f $HOME/.kde/Autostart/compiz.desktop
-
-	if checkbootparam "compiz" && [ -x /usr/bin/compiz ]; then
-		mkdir -p $HOME/.kde/Autostart
-		echo "[Desktop Entry]
-Encoding=UTF-8
-Exec=compiz --replace
-GenericName[de_DE]=
-StartupNotify=false
-Terminal=false
-TerminalOptions=
-Type=Application
-X-KDE-autostart-after=kdesktop" > $HOME/.kde/Autostart/compiz.desktop
 	fi
 
 	# Setup language/keyboard

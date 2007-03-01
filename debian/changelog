@@ -1,8 +1,13 @@
-xsession-sidux (0.7.14) UNRELEASED; urgency=low
+xsession-sidux (0.7.14) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * don't conflict with packages neither in sidux nor in debian:
+    - kanotix-remountrw
+    - mkdesktophdicons-kanotix
+    - xsession-kanotix
+    - xsession-initscript-kanotix
+  * remove immature compiz/ beryl support.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 25 Feb 2007 00:35:19 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu,  1 Mar 2007 19:56:18 +0100
 
 xsession-sidux (0.7.13) unstable; urgency=low
 
