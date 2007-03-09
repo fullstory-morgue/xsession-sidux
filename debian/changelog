@@ -1,5 +1,7 @@
-xsession-sidux (0.8.0) unstable; urgency=low
+xsession-sidux (0.8.0) ORPHANED; urgency=low
 
+  * NOT RELEASED YET
+  * ORPHAN PACKAGE
   * populate /home/$FLL_LIVE_USER/ in initscripts-sidux-live instead of
     xsession-sidux.
   * move generic X.org setup from initscripts-sidux-live to

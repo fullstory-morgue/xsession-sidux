@@ -41,7 +41,7 @@ XMODULE=""
 [ -f "$HWSETUP_XSERVER" ] &&	source "$HWSETUP_XSERVER"
 [ -f "$HWSETUP_MAIN" ] &&	source "$HWSETUP_MAIN"
 
-[ -n "$BACKGROUND" -a -e "$BACKGROUND" ] || BACKGROUND="-solid black"
+[ -n "$BACKGROUND" ] && [ -e "$BACKGROUND" ] || BACKGROUND="-solid black"
 
 # Disable TCP listening
 NOLISTEN="-nolisten tcp"
