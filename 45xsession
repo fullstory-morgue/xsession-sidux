@@ -20,8 +20,6 @@ export PATH
 
 umask 022
 
-LANGUAGE="$(echo $LANG | cut -d\_ -f1)"
-
 # Functions shamelessly copied from -autoconfig
 stringinstring() {
 	case "$2" in
@@ -69,9 +67,6 @@ xsetroot -cursor_name left_ptr
 
 xauth add $DISPLAY  MIT-MAGIC-COOKIE-1  $(mcookie)
 
-DONTCHANGE=""
-[ -e $HOME/.kde/share/config/kdeglobals ] && DONTCHANGE="yes"
-
 # Don't use this yet. We don't have TTF equivalents for all
 # Fonts yet.
 # QT_XFT=1
@@ -94,71 +89,6 @@ export PATH
 
 # kde is the default
 [ -z "$DESKTOP" ] && DESKTOP="kde"
-
-# Copy profiles if not already present
-# modified to pull entire /etc/skel and /usr/share/user-profile/profile folder contents,
-# depending on ramdisk space constraints
-
-# Calculate size of /etc/skel and /usr/share/user-profile/profile dirs
-HOME_SIZE="$(( $(du --max-depth=0 /usr/share/user-profile/profile | awk '{ print $1 }') + $(du --max-depth=0 /etc/skel | awk '{ print $1 }') ))"
-
-# Calculate free space on partition containing /home dir
-FREESPACE="$(df -k "$HOME" | awk '/^\/|^rootfs/{print $4}')"
-
-if [ "$FREESPACE" -gt "$HOME_SIZE" ]; then
-	# if there's space, copy entire /etc/skel and /usr/share/user-profile/profile
-	rsync -Ha --ignore-existing /etc/skel/ $HOME 2>/dev/null
-	[ "$USER" = "$FLL_LIVE_USER" ] && rsync -Ha --ignore-existing /usr/share/user-profile/profile/ "$HOME/" 2>/dev/null
-else
-	# if there's not enough space, copy important dir only
-	# XXX - not sure how "important" .klik and .zAppRun are...- bg
-	rsync -Ha --ignore-existing /etc/skel/{.Xdefaults,.bashrc,.qt,.gtk*} $HOME/ 2>/dev/null
-	[ "$USER" = "$FLL_LIVE_USER" ] && rsync -Ha --ignore-existing /usr/share/user-profile/profile/{.Xdefaults,.bashrc,.qt,.kde,.klik,.zAppRun} "$HOME/" 2>/dev/null
-fi
-
-# add aliases for sudo and su
-grep alias\ su /home/$FLL_LIVE_USER/.bashrc > /dev/null || echo "alias su=\"sudo su\"" >> /home/$FLL_LIVE_USER/.bashrc
-grep alias\ sux /home/$FLL_LIVE_USER/.bashrc > /dev/null || echo "alias sux=\"sudo sux\"" >> /home/$FLL_LIVE_USER/.bashrc
-
-# configure kdesu to use sudo for the live user
-if kde-config && [ ! -r /home/$FLL_LIVE_USER/.kde/share/config/kdesurc ] ; then
-	mkdir -p /home/$FLL_LIVE_USER/.kde/share/config/
-	echo "[super-user-command]" > /home/$FLL_LIVE_USER/.kde/share/config/kdesurc
-	echo "super-user-command=sudo" >> /home/$FLL_LIVE_USER/.kde/share/config/kdesurc
-fi
-
-# Share Mozilla plugins with Firefox (and mv profile)
-if [ -x /usr/bin/iceweasel ]; then
-	MOZPROFILE=$(awk '/Profile/{if (/Profile0/){inprof=1}else{inprof=0}}/Path/{if(inprof){print;}}' \
-		$HOME/.mozilla/iceweasel/profiles.ini | sed 's/^Path\=//' )
-	NEWMOZPROFILE=$(mawk 'BEGIN{print int(10000000 * rand())}')".default"
-	mv $HOME/.mozilla/iceweasel/$MOZPROFILE $HOME/.mozilla/iceweasel/$NEWMOZPROFILE && \
-		sed 's/Path='$MOZPROFILE'/Path='$NEWMOZPROFILE'/' \
-		$HOME/.mozilla/iceweasel/profiles.ini > $HOME/.mozilla/iceweasel/profiles.ini.new && \
-		mv -f $HOME/.mozilla/iceweasel/profiles.ini.new $HOME/.mozilla/iceweasel/profiles.ini
-	
-	# who knows how it will be called tomorrow...
-	ln -fs iceweasel $HOME/.mozilla/firefox
-fi
-	    
-if [ -n "$LANGUAGE" ]; then
-	# Set mozilla's preferred language
-	for f in `ls -1 $HOME/.mozilla/*/*/prefs.js 2>/dev/null`; do
-		echo 'user_pref("intl.accept_languages", "'"$LANGUAGE"', en");' >>"$f"
-		
-		case "$LANG" in
-			de*|at*|ch*)
-				echo 'user_pref("general.useragent.contentlocale", "AT");' >>"$f"
-				echo 'user_pref("general.useragent.locale", "de-AT");' >>"$f" ;;
-		esac
-		# Else leave default language
-done
-
-for f in `ls -1 $HOME/.mozilla/*/*/chrome/chrome.rdf.$LANGUAGE 2>/dev/null`; do
-	\mv -f "$f" "${f%%.${LANGUAGE}}"
-done
-
-fi
 
 playsound(){
 	# Play sound if soundcore module present (checking /dev/sndstat is unreliable)
@@ -185,113 +115,11 @@ playsound(){
 }
 
 startkde() {
-	# Play sound
-
-	CMDLINE=$(cat /proc/cmdline) # FIXME!
-
-	if [ -z "$DONTCHANGE" ]; then
-		# No persistent homedir, copy everything
-		rsync -Ha --ignore-existing /etc/skel/{.kde*,Desktop} $HOME/ 2>/dev/null
-		[ "$USER" = "$FLL_LIVE_USER" ] && rsync -Ha --ignore-existing /usr/share/user-profile/profile/{.kde*,Desktop} $HOME/ 2>/dev/null
-	else
-		# Only regenerate the config and Desktop files if missing
-		mkdir -p $HOME/.kde/share $HOME/Desktop
-		rsync -Ha --ignore-existing /etc/skel/.kde/share/* $HOME/.kde/share/ 2>/dev/null
-		[ "$USER" = "$FLL_LIVE_USER" ] && rsync -Ha --ignore-existing /usr/share/user-profile/profile/.kde/share/* $HOME/.kde/share/ 2>/dev/null
-		rsync -Ha --ignore-existing /etc/skel/Desktop/* $HOME/Desktop/ 2>/dev/null
-		[ "$USER" = "$FLL_LIVE_USER" ] && rsync -Ha --ignore-existing /usr/share/user-profile/profile/Desktop/* $HOME/Desktop/ 2>/dev/null
-		rm -f $HOME/.kde/Autostart/sorticons.desktop
-	fi
-
-	# Check for /index.html (_en), or KNOPPIX/index.html (_en) on this CD
-	if [ -e /cdrom/index.html ]; then
-		INDEXFILE="/cdrom/index.html"
-	else
-		for i in index ${FLL_IMAGE_DIR}/index; do
-			INDEXFILEDE="/cdrom/${i}.html"
-			INDEXFILEEN="/cdrom/${i}_en.html"
-			[ -e "$INDEXFILEEN" ] && INDEXFILE="$INDEXFILEEN" && [ "$LANGUAGE" != "de" ] && break
-			[ -e "$INDEXFILEDE" ] && INDEXFILE="$INDEXFILEDE" && [ "$LANGUAGE"  = "de" ] && break
-		done
-	fi
-
-	if [ -e "$INDEXFILE" ]; then
-		cat >> "$HOME/Desktop/$FLL_DISTRO_NAME.desktop" <<EOF
-[Desktop Entry]
-Name=$FLL_CDROM_INDEX
-# Exec=kfmclient openProfile webbrowsing $INDEXFILE
-Exec=konqueror --geometry 950x700+35+20 file:$INDEXFILE
-Type=Application
-Icon=$FLL_CDROM_INDEX_ICON
-Terminal=0
-EOF
-		if ! checkbootparam "nointro"; then
-			mkdir -p $HOME/.kde/Autostart
-			ln "$HOME/Desktop/$FLL_DISTRO_NAME.desktop" "$HOME/.kde/Autostart/showindex.desktop"
-		fi
-	fi
-
-	# Setup language/keyboard
-	[ -d $HOME/.kde/share/config ] || mkdir -p $HOME/.kde/share/config
-	
-	if [ -z "$DONTCHANGE" ]; then
-		touch $HOME/.kde/share/config/kdeglobals
-		rm -f $HOME/.kde/share/config/kdeglobals.tmp
-		
-		sed -e 's/^Charset=.*$/Charset='"$CHARSET"'/' \
-		    -e 's/^Country=.*$/Country='"$COUNTRY"'/' \
-		    -e 's/^Language=.*$/Language='"$LANGUAGE"'/' \
-		    $HOME/.kde/share/config/kdeglobals > $HOME/.kde/share/config/kdeglobals.tmp
-		\mv -f $HOME/.kde/share/config/kdeglobals.tmp $HOME/.kde/share/config/kdeglobals
-
-		if [ -z "$BACKGROUND" -o ! -e "$BACKGROUND" ]; then
-			for i in png jpg gif; do
-				BACKGROUND=usr/share/wallpapers/sidux.$i
-				[ -e "$BACKGROUND" ] && break
-			done
-		fi
-
-		sed -e 's|Wallpaper=.*$|Wallpaper='"$BACKGROUND"'|g' \
-		    $HOME/.kde/share/config/kdesktoprc > $HOME/.kde/share/config/kdesktoprc.tmp
-		\mv -f $HOME/.kde/share/config/kdesktoprc.tmp $HOME/.kde/share/config/kdesktoprc
-		touch -r /etc/skel/.kde/share/config/kdeglobals $HOME/.kde/share/config/kdeglobals 2>/dev/null
-		touch $HOME/.kde/share/config/kxkbrc
-		rm -f $HOME/.kde/share/config/kxkbrc.tmp
-
-		sed -e 's/^LayoutList=.*$/LayoutList='"$FLL_KDEKEYBOARDS"'/' \
-		    $HOME/.kde/share/config/kxkbrc > $HOME/.kde/share/config/kxkbrc.tmp
-		\mv -f $HOME/.kde/share/config/kxkbrc.tmp $HOME/.kde/share/config/kxkbrc
-		touch -r /etc/skel/.kde/share/config/kxkbrc $HOME/.kde/share/config/kxkbrc 2>/dev/null
-
-		# Check for custom splashscreen in /cdrom/KNOPPIX
-		if [ -d /cdrom/${FLL_IMAGE_DIR}/ksplash ]; then
-			[ -d $HOME/.kde/share/apps ] || mkdir -p $HOME/.kde/share/apps
-			ln -s /cdrom/${FLL_IMAGE_DIR}/ksplash $HOME/.kde/share/apps/
-		fi
-	fi
-
 	# Start KDE3
 	echo "kde_restart" >/etc/sysconfig/xsession-commands
 	export XDM_MANAGED="/etc/sysconfig/xsession-commands,maysd,mayfn,sched,method=classic"
 
-	if [ ! -r "$HOME/.kde/share/config/startupconfigkeys" ]; then
-		# see kstartupconfig source for usage
-		mkdir -m 700 -p "$HOME/.kde"
-		mkdir -m 700 -p "$HOME/.kde/share"
-		mkdir -m 700 -p "$HOME/.kde/share/config"
-		cat > "$HOME/.kde/share/config/startupconfigkeys" <<EOF
-kcminputrc Mouse cursorTheme ''
-kcminputrc Mouse cursorSize ''
-kpersonalizerrc General FirstLogin false
-ksplashrc KSplash Theme Default
-kcmrandrrc Display ApplyOnStartup false
-kcmrandrrc [Screen0]
-kcmrandrrc [Screen1]
-kcmrandrrc [Screen2]
-kcmrandrrc [Screen3]
-kcmfonts General forceFontDPI 0
-EOF
-	fi
+	playsound
 
 	/usr/bin/startkde
 
@@ -396,9 +224,6 @@ $MESSAGE
 
 startgnome() {
 	type gnome-session >/dev/null 2>&1 || starttwm
-	rsync -Ha --ignore-existing /etc/skel/{.gnome*,.gtk*,.metacity*,GNUstep,.sawfish,.nautilus,Nautilus} $HOME/ 2>/dev/null
-
-	[ "$USER" = "$FLL_LIVE_USER" ] && rsync -Ha --ignore-existing /usr/share/user-profile/profile/{.gnome*,GNUstep,.sawfish,.nautilus,Nautilus} $HOME/ 2>/dev/null
 
 	playsound
 
@@ -413,8 +238,8 @@ startgnome() {
 }
 
 startlarswm() {
-	[ -e "$HOME"/.larswmrc ] || rsync -Ha --ignore-existing /etc/skel/.larswmrc $HOME/ 2>/dev/null
 	playsound
+
 	exec larswm
 }
 
@@ -458,10 +283,6 @@ startxfce4() {
 	GDK_USE_XFT=1
 	export GDK_USE_XFT
 
-	# XFCE4 setup
-	if [ ! -e $HOME/.xfce4 ]; then
-		rsync -Ha --ignore-existing /etc/skel/.xf* /usr/share/user-profile/profile/.xf* $HOME/ 2>/dev/null
-	fi
 	exec /etc/xdg/xfce4/xinitrc 
 }
 

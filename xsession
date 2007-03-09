@@ -49,15 +49,6 @@ NOLISTEN="-nolisten tcp"
 # Black
 BR="-br"
 
-SOCKET_DIR=/tmp/.X11-unix
-ICE_DIR=/tmp/.ICE-unix
-mkdir -p $SOCKET_DIR
-chown 0:0 $SOCKET_DIR
-chmod 1777 $SOCKET_DIR
-mkdir -p $ICE_DIR
-chown 0:0 $ICE_DIR
-chmod 1777 $ICE_DIR
-
 # See how we were called.
 case "$1" in
 	start)

@@ -1,8 +1,11 @@
-xsession-sidux (0.7.15) UNRELEASED; urgency=low
+xsession-sidux (0.8.0) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * populate /home/$FLL_LIVE_USER/ in initscripts-sidux-live instead of
+    xsession-sidux.
+  * move generic X.org setup from initscripts-sidux-live to
+    initscripts-sidux-live.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu,  1 Mar 2007 19:58:21 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri,  9 Mar 2007 19:04:51 +0100
 
 xsession-sidux (0.7.14) unstable; urgency=low
 
