@@ -9,9 +9,10 @@ xsession-sidux (0.8.0) ORPHANED; urgency=low
     initscripts-sidux-live.
 
   [ Bernard Gray ]
-  * typo correction on fallback FLL_CDROM_INDEX 
+  * typo correction on fallback FLL_CDROM_INDEX
+  * FLL_CDROM_INDEX isn't used here any longer
 
- -- Bernard Gray <bernard.gray@gmail.com>  Sat, 19 May 2007 16:16:31 +1000
+ -- Bernard Gray <bernard.gray@gmail.com>  Sat, 19 May 2007 16:27:57 +1000
 
 xsession-sidux (0.7.14) unstable; urgency=low
 
