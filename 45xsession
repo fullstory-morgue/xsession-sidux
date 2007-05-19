@@ -5,7 +5,7 @@ FLL_DISTRO_MODE="installed"
 FLL_DISTRO_NAME="sidux"
 FLL_LIVE_USER="sidux"
 FLL_IMAGE_DIR="SIDUX"
-FLL_CDROM_INDEX="sidux manual"
+FLL_CDROM_INDEX="sidux Manual"
 FLL_CDROM_INDEX_ICON="html"
 if [ -r /etc/default/distro ]; then
 	source /etc/default/distro

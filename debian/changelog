@@ -1,5 +1,6 @@
 xsession-sidux (0.8.0) ORPHANED; urgency=low
 
+  [ Stefan Lippers-Hollmann ]
   * NOT RELEASED YET
   * ORPHAN PACKAGE
   * populate /home/$FLL_LIVE_USER/ in initscripts-sidux-live instead of
@@ -7,7 +8,10 @@ xsession-sidux (0.8.0) ORPHANED; urgency=low
   * move generic X.org setup from initscripts-sidux-live to
     initscripts-sidux-live.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri,  9 Mar 2007 19:04:51 +0100
+  [ Bernard Gray ]
+  * typo correction on fallback FLL_CDROM_INDEX 
+
+ -- Bernard Gray <bernard.gray@gmail.com>  Sat, 19 May 2007 16:16:31 +1000
 
 xsession-sidux (0.7.14) unstable; urgency=low
 
